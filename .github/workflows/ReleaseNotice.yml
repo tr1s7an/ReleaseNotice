@@ -1,5 +1,6 @@
 name: Check and Send Message 
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '00 21 * * *'
 jobs:
