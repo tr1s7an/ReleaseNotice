@@ -25,6 +25,10 @@ jobs:
               -H 'Content-Type: application/json' \
               -d '{"chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}", "text": "'${each_new}'", "disable_web_page_preview": true }' \
               -s https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
+            curl -X POST \
+              -H 'Authorization: Bearer ${{ secrets.NTFY_TOKEN }}' \
+              -d '${each_new}' \
+              -s ${{ secrets.NTFY_SERVER }}
           done
       - name: Commit latest release version
         if: steps.git-check.outputs.modified == 'true'
