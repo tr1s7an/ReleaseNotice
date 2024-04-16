@@ -27,7 +27,7 @@ jobs:
               -s https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
             curl -X POST \
               -H 'Authorization: Bearer ${{ secrets.NTFY_TOKEN }}' \
-              -d '${each_new}' \
+              -d "${each_new}" \
               -s ${{ secrets.NTFY_SERVER }}
           done
       - name: Commit latest release version
